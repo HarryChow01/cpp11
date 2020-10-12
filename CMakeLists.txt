@@ -18,23 +18,18 @@ add_executable(unordered_map_test unordered_map_test.cpp)
 add_executable(unordered_set_test unordered_set_test.cpp)
 
 add_executable(template_test template_test.cpp)
-
 add_executable(thread_test src/thread/thread_test.cpp)
 add_executable(thread_test2 src/thread/thread_test2.cpp)
 add_executable(atomic_test src/thread/atomic_test.cpp)
 add_executable(mutex_test src/thread/mutex_test.cpp)
-
-add_executable(boost_json_test src/boost_json_test.cpp)
-
-
 add_executable(cond_variable1 src/thread/cond_variable1.cpp)
 add_executable(cond_variable2 src/thread/cond_variable2.cpp)
+add_executable(cond_variable3 src/thread/cv_test.cpp)
+
+add_executable(time_test src/common/time/time_test.cpp)
 
 add_executable(murmurhash src/murmurhash.cpp)
 
-
-#add_executable(epoll_server src/net/epoll_server.cpp)
-#add_executable(epoll_client src/net/epoll_client.cpp)
 
 
 
