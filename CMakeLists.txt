@@ -21,6 +21,8 @@ add_executable(template_test template_test.cpp)
 add_executable(thread_test src/thread/thread_test.cpp)
 add_executable(thread_test2 src/thread/thread_test2.cpp)
 add_executable(atomic_test src/thread/atomic_test.cpp)
+add_executable(future_test src/thread/future_test.cpp)
+add_executable(future2_test src/thread/future2_test.cpp)
 add_executable(mutex_test src/thread/mutex_test.cpp)
 add_executable(cond_variable1 src/thread/cond_variable1.cpp)
 add_executable(cond_variable2 src/thread/cond_variable2.cpp)
@@ -30,8 +32,9 @@ add_executable(time_test src/common/time/time_test.cpp)
 
 add_executable(murmurhash src/murmurhash.cpp)
 
-
-
-
+include_directories("../thirdparty/rocks-v6.11.4/include")
+link_directories("../thirdparty/rocks-v6.11.4/lib")
+add_executable(rocksdb_test src/rocksdb_test.cpp)
+target_link_libraries(rocksdb_test pthread dl z bz2 snappy rocksdb)
 
 
