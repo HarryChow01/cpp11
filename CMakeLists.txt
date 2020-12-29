@@ -5,7 +5,6 @@ set(CMAKE_CXX_FLAGS "-std=c++11 -pthread")
 
 add_executable(vector_test vector_test.cpp)
 add_executable(list_test list_test.cpp)
-add_executable(string_test string_test.cpp)
 add_executable(array_test array_test.cpp)
 add_executable(forward_list_test forward_list_test.cpp)
 add_executable(deque_test deque_test.cpp)
@@ -27,9 +26,7 @@ add_executable(mutex_test src/thread/mutex_test.cpp)
 add_executable(cond_variable1 src/thread/cond_variable1.cpp)
 add_executable(cond_variable2 src/thread/cond_variable2.cpp)
 add_executable(cond_variable3 src/thread/cv_test.cpp)
-
 add_executable(time_test src/common/time/time_test.cpp)
-
 add_executable(murmurhash src/murmurhash.cpp)
 
 include_directories("../thirdparty/rocks-v6.11.4/include")
