@@ -3,6 +3,8 @@ project(cpp11)
 
 set(CMAKE_CXX_FLAGS "-std=c++11 -pthread")
 
+include_directories("include")
+
 add_executable(vector_test vector_test.cpp)
 add_executable(list_test list_test.cpp)
 add_executable(array_test array_test.cpp)
@@ -26,12 +28,15 @@ add_executable(mutex_test src/thread/mutex_test.cpp)
 add_executable(cond_variable1 src/thread/cond_variable1.cpp)
 add_executable(cond_variable2 src/thread/cond_variable2.cpp)
 add_executable(cond_variable3 src/thread/cv_test.cpp)
-add_executable(time_test src/common/time/time_test.cpp)
+add_executable(time_test1 src/common/time/time_test1.cpp)
+add_executable(time_test2 src/common/time/time_test2.cpp)
 add_executable(murmurhash src/murmurhash.cpp)
 
-include_directories("../thirdparty/rocks-v6.11.4/include")
-link_directories("../thirdparty/rocks-v6.11.4/lib")
-add_executable(rocksdb_test src/rocksdb_test.cpp)
-target_link_libraries(rocksdb_test pthread dl z bz2 snappy rocksdb)
+#include_directories("../thirdparty/rocks-v6.11.4/include")
+#link_directories("../thirdparty/rocks-v6.11.4/lib")
+#add_executable(rocksdb_test src/rocksdb_test.cpp)
+#target_link_libraries(rocksdb_test pthread dl z bz2 snappy rocksdb)
+
+
 
 
