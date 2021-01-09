@@ -9,9 +9,15 @@ int main() {
 
     const size_t kCount = 1024 * 1024 * 1024;
     timer t1;
+    timespec tp1 = t1.getStartTime();
+    std::cout << "tp1.tv_sec: " << tp1.tv_sec << ", tp1.tv_nsec: " << tp1.tv_nsec << std::endl;
+    tp1 = t1.getEndTime();
+    std::cout << "tp1.tv_sec: " << tp1.tv_sec << ", tp1.tv_nsec: " << tp1.tv_nsec << std::endl;
+
     t1.setStartTime();
+    size_t count = 0;
     for (size_t i = 0; i < kCount; ++i) {
-        ;
+        ++count;
     }
     t1.setEndTime();
 

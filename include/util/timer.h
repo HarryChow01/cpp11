@@ -9,9 +9,13 @@
 
 class timer {
 public:
+
+    timer() = default;
+
     void setStartTime() {
         clock_gettime(CLOCK_MONOTONIC, &start); // suggest CLOCK_MONOTONIC
     }
+
     void setEndTime() {
         clock_gettime(CLOCK_MONOTONIC, &end);
     }
@@ -19,6 +23,7 @@ public:
     timespec getStartTime() {
         return start;
     }
+
     timespec getEndTime() {
         return end;
     }
@@ -43,8 +48,8 @@ public:
     }
 
 private:
-    struct timespec start;
-    struct timespec end;
+    struct timespec start = {};
+    struct timespec end = {};
 };
 
 #endif //CPP11_TIMER_H
