@@ -2,6 +2,8 @@
 #include<utility>   // std::pair
 #include <map>
 #include <iostream>
+#include <memory>
+
 using namespace std;
 
 void testMap() {
@@ -47,8 +49,23 @@ void testMap() {
         std::cout << item.first << " => " << item.second << '\n';
 }
 
+
+
+using namespace std;
+
+struct xx {
+    //std::unique_ptr<int> pInt;
+    int age = 0;
+};
+
+void map_test() {
+    std::map<string, xx> testMap;
+    testMap["aa"] = xx();
+
+}
 int main() {
-    testMap();
+    //testMap();
+    map_test();
 
     return 0;
 }

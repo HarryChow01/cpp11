@@ -17,6 +17,7 @@ add_executable(map_test map_test.cpp)
 add_executable(set_test set_test.cpp)
 add_executable(unordered_map_test unordered_map_test.cpp)
 add_executable(unordered_set_test unordered_set_test.cpp)
+add_executable(pair_test pair_test.cpp)
 
 add_executable(template_test template_test.cpp)
 add_executable(thread_test src/thread/thread_test.cpp)
@@ -31,6 +32,10 @@ add_executable(cond_variable3 src/thread/cv_test.cpp)
 add_executable(time_test1 src/common/time/time_test1.cpp)
 add_executable(time_test2 src/common/time/time_test2.cpp)
 add_executable(murmurhash src/murmurhash.cpp)
+
+add_executable(uniqueptr_test src/smartptr/uniqueptr_test.cpp)
+
+add_executable(cpp_test src/test/cpp_test.cpp)
 
 #include_directories("../thirdparty/rocks-v6.11.4/include")
 #link_directories("../thirdparty/rocks-v6.11.4/lib")
