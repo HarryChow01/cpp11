@@ -53,16 +53,34 @@ void testMap() {
 
 using namespace std;
 
-struct xx {
-    //std::unique_ptr<int> pInt;
+struct XX {
+    std::unique_ptr<int> pInt;
     int age = 0;
+    XX(int pp = 0) {
+        age = pp;
+        std::cout << "default construct" << std::endl;
+    }
+    XX(const XX& xx) {
+        std::cout << "default copy" << std::endl;
+    }
+    XX& operator=(const XX& xx) {
+        std::cout << "default assign" << std::endl;
+        return *this;
+    }
+    ~XX() = default;
 };
 
 void map_test() {
-    std::map<string, xx> testMap;
-    testMap["aa"] = xx();
+    std::map<string, XX> testMap;
+    //XX xx;
+    //testMap["aa"] = xx;   // 2次构造，1次拷贝
+
+    //testMap["bb"] = XX(); // 2次构造，1次拷贝
+
+    testMap.emplace("cc", 15);  // 1次调用构造函数
 
 }
+
 int main() {
     //testMap();
     map_test();
