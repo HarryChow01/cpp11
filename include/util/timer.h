@@ -7,10 +7,10 @@
 
 #include <ctime>
 
-class timer {
+class Timer {
 public:
 
-    timer() = default;
+    Timer() = default;
 
     void setStartTime() {
         clock_gettime(CLOCK_MONOTONIC, &start); // suggest CLOCK_MONOTONIC
@@ -45,6 +45,12 @@ public:
     long getDiffTimeNano() {
         return (end.tv_sec - start.tv_sec) * 1000000000L +
                (end.tv_nsec - start.tv_nsec);
+    }
+
+    static long getNowInSecond() {
+        timespec now;
+        clock_gettime(CLOCK_MONOTONIC, &now);
+        return now.tv_sec;
     }
 
 private:

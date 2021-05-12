@@ -8,7 +8,7 @@
 int main() {
 
     const size_t kCount = 1024 * 1024 * 1024;
-    timer t1;
+    Timer t1;
     timespec tp1 = t1.getStartTime();
     std::cout << "tp1.tv_sec: " << tp1.tv_sec << ", tp1.tv_nsec: " << tp1.tv_nsec << std::endl;
     tp1 = t1.getEndTime();

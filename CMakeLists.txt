@@ -39,8 +39,10 @@ add_executable(cpp_test src/test/cpp_test.cpp)
 
 include_directories("../thirdparty/rocks-v6.13.3/include")
 link_directories("../thirdparty/rocks-v6.13.3/lib")
-add_executable(rocksdb_test src/rocksdb_test.cpp)
-target_link_libraries(rocksdb_test pthread dl z bz2 lz4 rocksdb)
+add_executable(rocksdb_test1 src/rocksdb_test1.cpp)
+target_link_libraries(rocksdb_test1 pthread dl z bz2 lz4 rocksdb)
+add_executable(rocksdb_test2 src/rocksdb_test2.cpp)
+target_link_libraries(rocksdb_test2 pthread dl z bz2 lz4 rocksdb)
 
 
 

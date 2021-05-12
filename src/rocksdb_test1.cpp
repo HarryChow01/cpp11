@@ -9,9 +9,10 @@
 
 #include "rocksdb/db.h"
 
+const size_t kKeyCount = 1024;
+const size_t kBlockSize = 1024 * 1024;
+
 int main(int argc, char* argv[]) {
-    const size_t kKeyCount = 1024;
-    const size_t kBlockSize = 1024 * 1024;
     rocksdb::DB* db;
     rocksdb::Options options;
     options.create_if_missing = true;
