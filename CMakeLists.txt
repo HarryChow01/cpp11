@@ -37,11 +37,10 @@ add_executable(uniqueptr_test src/smartptr/uniqueptr_test.cpp)
 
 add_executable(cpp_test src/test/cpp_test.cpp)
 
-#include_directories("../thirdparty/rocks-v6.11.4/include")
-#link_directories("../thirdparty/rocks-v6.11.4/lib")
-#add_executable(rocksdb_test src/rocksdb_test.cpp)
-#target_link_libraries(rocksdb_test pthread dl z bz2 snappy rocksdb)
-
+include_directories("../thirdparty/rocks-v6.13.3/include")
+link_directories("../thirdparty/rocks-v6.13.3/lib")
+add_executable(rocksdb_test src/rocksdb_test.cpp)
+target_link_libraries(rocksdb_test pthread dl z bz2 lz4 rocksdb)
 
 
 

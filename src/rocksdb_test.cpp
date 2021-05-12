@@ -1,5 +1,5 @@
 //
-// Created by Chow on 2020/12/27.
+// Created by Chow on 2020/12/27
 //
 
 #include <string>
@@ -16,7 +16,7 @@ int main(int argc, char* argv[]) {
     rocksdb::Options options;
     options.create_if_missing = true;
     rocksdb::Status status = rocksdb::DB::Open(options, "./testdb", &db);
-    std::cout << "rocksb open status: " << status.ok() << std::endl;
+    std::cout << "rocksdb open status: " << status.ok() << std::endl;
 
     // std::string sKey("key1");
     // std::string sValue("value1");
