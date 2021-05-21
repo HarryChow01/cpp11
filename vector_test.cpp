@@ -1,4 +1,5 @@
 #include <vector>
+#include <map>
 #include <set>
 #include <iostream>
 
@@ -92,24 +93,20 @@ void erase_test() {
 }
 
 void data_test() {
-    std::vector<int> vInt;
-    vInt.push_back(1);
-    vInt.push_back(2);
-    vInt.push_back(3);
-    vInt.push_back(4);
-
-
+    std::vector<int> vInt(5, 2);
     cout << "vInt.size: " << vInt.size() << ", sizeof(vInt): " << sizeof(vInt) << endl;
     cout << "vInt.size(): " << vInt.size() << ", vInt.capacity(): " << vInt.capacity() << endl;
     int aa;
 }
+
 
 int main() {
     //erase_test();
     //init_test();
     //add_test();
     //storage_test();
-    data_test();
+    data_test1();
+
 }
 
 

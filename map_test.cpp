@@ -49,9 +49,28 @@ void testMap() {
         std::cout << item.first << " => " << item.second << '\n';
 }
 
+void TestMap2() {
+    using PairPointer = std::pair<int, int>*;
+    using MapItemPointer = std::pair<const int, int>*;
+    using ConstMapItemPointer = const std::pair<const int, int>*;
+
+    std::pair<int, int> pair1 = std::pair<int, int>(5,4);
+    PairPointer p1 = &pair1;
+    std::cout << "p->first: " << p1->first << ", p->second: " << p1->second << std::endl;
+
+    std::map<int, int> map1;
+    map1.emplace(1, 2);
+
+    for (auto& item : map1) {
+        MapItemPointer p2 = &item;
+    }
+
+    for (const auto& item : map1) {
+        ConstMapItemPointer p3 = &item;
+    }
+}
 
 
-using namespace std;
 
 struct XX {
     std::unique_ptr<int> pInt;
