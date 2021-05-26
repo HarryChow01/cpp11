@@ -5,6 +5,8 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 
 include_directories("include")
 
+add_executable(main_test main_test.cpp)
+add_executable(string_test string_test.cpp)
 add_executable(vector_test vector_test.cpp)
 add_executable(list_test list_test.cpp)
 add_executable(array_test array_test.cpp)
