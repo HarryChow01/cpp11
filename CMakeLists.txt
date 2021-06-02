@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.9)
+cmake_minimum_required(VERSION 3.2)
 project(cpp11)
 
 set(CMAKE_CXX_FLAGS "-std=c++11")
@@ -39,12 +39,12 @@ add_executable(uniqueptr_test src/smartptr/uniqueptr_test.cpp)
 
 add_executable(cpp_test src/test/cpp_test.cpp)
 
-include_directories("../thirdparty/rocks-v6.13.3/include")
-link_directories("../thirdparty/rocks-v6.13.3/lib")
-add_executable(rocksdb_test1 src/rocksdb_test1.cpp)
-target_link_libraries(rocksdb_test1 pthread dl z bz2 lz4 rocksdb)
-add_executable(rocksdb_test2 src/rocksdb_test2.cpp)
-target_link_libraries(rocksdb_test2 pthread dl z bz2 lz4 rocksdb)
+# include_directories("../thirdparty/rocks-v6.13.3/include")
+# link_directories("../thirdparty/rocks-v6.13.3/lib")
+# add_executable(rocksdb_test1 src/rocksdb_test1.cpp)
+# target_link_libraries(rocksdb_test1 pthread dl z bz2 lz4 rocksdb)
+# add_executable(rocksdb_test2 src/rocksdb_test2.cpp)
+# target_link_libraries(rocksdb_test2 pthread dl z bz2 lz4 rocksdb)
 
 
 

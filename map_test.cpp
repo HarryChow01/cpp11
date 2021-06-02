@@ -1,6 +1,7 @@
 
 #include<utility>   // std::pair
 #include <map>
+#include <set>
 #include <iostream>
 #include <memory>
 
@@ -100,9 +101,22 @@ void map_test() {
 
 }
 
+void map_test2() {
+    std::set<int> s1 = {1, 2, 3, 4, 5, 6};
+    std::map<std::string, std::set<int>> cfKVMap;
+    for (const auto& key : s1) {
+        const std::string& cfIndex = std::to_string(key % 3);
+        if (cfKVMap.count(cfIndex) == 0) {
+            cfKVMap[cfIndex];
+        }
+        cfKVMap[cfIndex].emplace(key);
+    }
+    int aa = 1;
+}
+
 int main() {
     //testMap();
-    map_test();
+    map_test2();
 
     return 0;
 }
