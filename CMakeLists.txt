@@ -33,7 +33,6 @@ add_executable(cond_variable2 src/thread/cond_variable2.cpp)
 add_executable(cond_variable3 src/thread/cv_test.cpp)
 add_executable(time_test1 src/common/time/time_test1.cpp)
 add_executable(time_test2 src/common/time/time_test2.cpp)
-add_executable(murmurhash src/murmurhash.cpp)
 
 add_executable(uniqueptr_test src/smartptr/uniqueptr_test.cpp)
 
