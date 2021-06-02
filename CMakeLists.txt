@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.2)
 project(cpp11)
 
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_C_COMPILER "clang")
+set(CMAKE_CXX_COMPILER "clang++")
+set(CMAKE_CXX_FLAGS "-std=c++14")
+# do not use -lclang, then link with libstdc++
+SET(CMAKE_EXE_LINKER_FLAGS "-pthread")
 
 include_directories("include")
 
