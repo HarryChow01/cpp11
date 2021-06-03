@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.2)
 project(cpp11)
 
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_C_COMPILER "clang")
+set(CMAKE_CXX_COMPILER "clang++")
+set(CMAKE_CXX_FLAGS "-std=c++14")
+# do not use -lclang, then link with libstdc++
+SET(CMAKE_EXE_LINKER_FLAGS "-pthread")
 
 include_directories("include")
 
@@ -33,7 +37,6 @@ add_executable(cond_variable2 src/thread/cond_variable2.cpp)
 add_executable(cond_variable3 src/thread/cv_test.cpp)
 add_executable(time_test1 src/common/time/time_test1.cpp)
 add_executable(time_test2 src/common/time/time_test2.cpp)
-add_executable(murmurhash src/murmurhash.cpp)
 
 add_executable(uniqueptr_test src/smartptr/uniqueptr_test.cpp)
 
