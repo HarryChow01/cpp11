@@ -13,14 +13,18 @@
 
 using namespace rocksdb;
 
-std::string kDBPath = "./data2";
+std::string kDBPath = "./data3";
 
-int main() {
-    // open DB
+void getCfNames();
+
+void test1() {
     Options options;
     options.create_if_missing = true;
     DB* db;
-    Status s;
+
+    // 如果目录下面有列族，则出错
+    Status s = DB::Open(options, kDBPath, &db);
+    assert(s.ok());
 
     std::vector<std::string> cfNames;
     s = rocksdb::DB::ListColumnFamilies(DBOptions(), kDBPath, &cfNames);
@@ -29,21 +33,87 @@ int main() {
         std::cout << "cfName: " << cfName << std::endl;
     }
 
+    // create column family
+    ColumnFamilyHandle* cf;
+    s = db->CreateColumnFamily(ColumnFamilyOptions(), "cf_0", &cf);
+    assert(s.ok());
+    // close DB
+    s = db->DestroyColumnFamilyHandle(cf);
+    assert(s.ok());
+
+    // create column family
+    s = db->CreateColumnFamily(ColumnFamilyOptions(), "cf_1", &cf);
+    assert(s.ok());
+    // close DB
+    s = db->DestroyColumnFamilyHandle(cf);
+    assert(s.ok());
+    delete db;
 
     // open DB with two column families
     std::vector<ColumnFamilyDescriptor> column_families;
     // have to open default column family
     column_families.emplace_back(kDefaultColumnFamilyName, ColumnFamilyOptions());
-    // open the new one, too
-    column_families.emplace_back("new_cf", ColumnFamilyOptions());
+    column_families.emplace_back("cf_0", ColumnFamilyOptions());
+    column_families.emplace_back("cf_1", ColumnFamilyOptions());
     std::vector<ColumnFamilyHandle*> handles;
     s = DB::Open(DBOptions(), kDBPath, column_families, &handles, &db);
     assert(s.ok());
+    std::cout << "handles.size(): " << handles.size() << std::endl;
 
     s = db->Put(WriteOptions(), handles[0], Slice("a1"), Slice("a1"));
     s = db->Put(WriteOptions(), handles[1], Slice("b1"), Slice("b1"));
 
+    db->Flush(FlushOptions(), handles[0]);
+    db->Flush(FlushOptions(), handles[1]);
+
     delete db;
+}
+
+/* 测试创建列族：
+ * 第1步，创建一个空的db（默认创建一个default列族）
+ * 第2步，添加几个列族然后destroy掉 */
+void test2() {
+    Options options;
+    options.create_if_missing = true;
+    DB* db;
+
+    // 如果目录下面有列族，则出错
+    Status s = DB::Open(options, kDBPath, &db);
+    assert(s.ok());
+
+    getCfNames();
+
+    // create column family
+    ColumnFamilyHandle* cf;
+    s = db->CreateColumnFamily(ColumnFamilyOptions(), "cf_0", &cf);
+    assert(s.ok());
+    // close DB
+    s = db->DestroyColumnFamilyHandle(cf);
+    assert(s.ok());
+
+    // create column family
+    s = db->CreateColumnFamily(ColumnFamilyOptions(), "cf_1", &cf);
+    assert(s.ok());
+    // close DB
+    s = db->DestroyColumnFamilyHandle(cf);
+    assert(s.ok());
+    delete db;
+
+    getCfNames();
+}
+
+void getCfNames() {
+    std::vector<std::string> cfNames;
+    Status s = rocksdb::DB::ListColumnFamilies(DBOptions(), kDBPath, &cfNames);
+    std::cout << "cfNames.size(): " << cfNames.size() << std::endl;
+    for (const auto& cfName : cfNames) {
+        std::cout << "cfName: " << cfName << std::endl;
+    }
+}
+
+int main() {
+    test2();
 
     return 0;
 }
+

@@ -60,14 +60,14 @@ int main() {
     assert(s.ok());
 
     // drop column family
-//    s = db->DropColumnFamily(handles[1]);
+    s = db->DropColumnFamily(handles[1]);
     assert(s.ok());
 
     // close db
-//    for (auto handle : handles) {
-//        s = db->DestroyColumnFamilyHandle(handle);
-//        assert(s.ok());
-//    }
+    for (auto handle : handles) {
+        s = db->DestroyColumnFamilyHandle(handle);
+        assert(s.ok());
+    }
     delete db;
 
     return 0;
