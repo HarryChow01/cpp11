@@ -16,4 +16,7 @@ link_directories("/opt/rh/local/lib")
 link_directories("/opt/rh/local/terarkdb-1.3.6/lib")
 add_executable(terarkdb_test1 terarkdb_test1.cpp)
 target_link_libraries(terarkdb_test1 pthread dl terarkdb z bz2 lz4 zstd snappy)
-
+add_executable(terarkdb_test2 terarkdb_test2.cpp)
+target_link_libraries(terarkdb_test2 pthread dl terarkdb z bz2 lz4 zstd snappy)
+add_executable(terarkdb_test3 terarkdb_test3.cpp)
+target_link_libraries(terarkdb_test3 pthread dl terarkdb z bz2 lz4 zstd snappy)
