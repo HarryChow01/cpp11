@@ -3,7 +3,7 @@ project(cpp11)
 
 set(CMAKE_C_COMPILER "clang")
 set(CMAKE_CXX_COMPILER "clang++")
-set(CMAKE_CXX_FLAGS "-std=c++14")
+set(CMAKE_CXX_FLAGS "-std=c++14 -fsanitize=leak -fno-omit-frame-pointer -g")
 # do not use -lclang, then link with libstdc++
 SET(CMAKE_EXE_LINKER_FLAGS "-pthread")
 
@@ -24,6 +24,7 @@ add_executable(set_test set_test.cpp)
 add_executable(unordered_map_test unordered_map_test.cpp)
 add_executable(unordered_set_test unordered_set_test.cpp)
 add_executable(pair_test pair_test.cpp)
+add_executable(asan_test asan_test.cpp)
 
 add_executable(template_test template_test.cpp)
 add_executable(thread_test src/thread/thread_test.cpp)
