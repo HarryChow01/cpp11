@@ -12,8 +12,18 @@ void uniqueptr_test() {
 
 }
 
+void shared_ptr_test() {
+
+    // std::shared_ptr<int> pInt(new int(5));
+    std::shared_ptr<int> pInt;
+    // bool needSync = current_sync_client ? true : false;
+    bool aa = pInt ? true : false;
+    std::cout << "aa: " << aa << std::endl;
+
+}
+
 int main() {
-    uniqueptr_test();
+    shared_ptr_test();
 }
 
 

@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.2)
 project(cpp_third)
 
-set(CMAKE_C_COMPILER "clang")
-set(CMAKE_CXX_COMPILER "clang++")
+#set(CMAKE_C_COMPILER "gcc")
+#set(CMAKE_CXX_COMPILER "clang++")
 set(CMAKE_CXX_FLAGS "-std=c++14")
+set(CMAKE_CXX_FLAGS "-ggdb3")
 # do not use -lclang, then link with libstdc++
 SET(CMAKE_EXE_LINKER_FLAGS "-pthread")
 

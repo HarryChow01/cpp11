@@ -102,6 +102,37 @@ void test2() {
     getCfNames();
 }
 
+void test3() {
+    Options options;
+    options.create_if_missing = true;
+    DB* db;
+    std::vector<ColumnFamilyHandle*> handles;
+
+
+    std::vector<std::string> column_family_names;
+    Status status = rocksdb::DB::ListColumnFamilies(options, kDBPath, &column_family_names);
+    std::vector<rocksdb::ColumnFamilyDescriptor> column_families;
+
+    for (size_t i = 0; i != column_family_names.size(); i++) {
+        column_families.emplace_back(column_family_names[i], rocksdb::ColumnFamilyOptions(options));
+    }
+
+    status = rocksdb::DB::Open(options, kDBPath, column_families, &handles, &db);
+
+    rocksdb::Iterator* it = db->NewIterator(rocksdb::ReadOptions());
+    for (it->SeekToFirst(); it->Valid(); it->Next()) {
+        std::cout << it->key().ToString() << ": " << it->value().ToString() << std::endl;
+    }
+
+}
+
+
+bool diff(const std::string& dbPath1, const std::string& dbPath2) {
+    // todo
+    return true;
+}
+
+
 void getCfNames() {
     std::vector<std::string> cfNames;
     Status s = rocksdb::DB::ListColumnFamilies(DBOptions(), kDBPath, &cfNames);
@@ -111,8 +142,18 @@ void getCfNames() {
     }
 }
 
+void getCfNames2(const std::string& dbPath) {
+    std::vector<std::string> cfNames;
+    Status s = rocksdb::DB::ListColumnFamilies(DBOptions(), dbPath, &cfNames);
+    std::cout << "cfNames.size(): " << cfNames.size() << std::endl;
+    for (const auto& cfName : cfNames) {
+        std::cout << "cfName: " << cfName << std::endl;
+    }
+}
+
 int main() {
-    test2();
+    const std::string dbPath = "/data/rocksdb/tf_base_ctr_3";
+    getCfNames2(dbPath);
 
     return 0;
 }
