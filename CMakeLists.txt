@@ -50,4 +50,3 @@ add_executable(cpp_test src/test/cpp_test.cpp)
 # target_link_libraries(rocksdb_test2 pthread dl z bz2 lz4 rocksdb)
 
 
-
