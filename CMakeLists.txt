@@ -1,11 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 project(cpp11)
 
-set(CMAKE_C_COMPILER "clang")
-set(CMAKE_CXX_COMPILER "clang++")
-set(CMAKE_CXX_FLAGS "-std=c++14 -fsanitize=leak -fno-omit-frame-pointer -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ggdb -fsanitize=leak -fno-omit-frame-pointer")
 # do not use -lclang, then link with libstdc++
-SET(CMAKE_EXE_LINKER_FLAGS "-pthread")
+SET(CMAKE_EXE_LINKER_FLAGS "-pthread -fsanitize=leak")
 
 include_directories("include")
 
